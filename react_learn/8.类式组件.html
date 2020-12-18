@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jsx语法规则</title>
+    <style>
+        .title {
+            background-color: orange;
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 准备好一个“容器” -->
+    <div id="test"></div>
+
+    <!-- 引入react核心库 -->
+    <script type="text/javascript" src="package/react.development.js"></script>
+    <!-- 引入react-dom，用于支持react操作DOM -->
+    <script type="text/javascript" src="package/react-dom.development.js"></script>
+    <!-- 引入babel，用于将jsx转为js -->
+    <script type="text/javascript" src="package/babel.min.js"></script>
+
+    <script type="text/babel">
+        // 类式组件
+        class Demo extends React.Component {
+            render() {
+                // Demo组件实例对象
+                console.log(this);
+                return (
+                    <h1>使用类式组件</h1>
+                );
+            }
+        }
+        // 这个方法会new出来一个Demo类的实例对象
+        ReactDOM.render(<Demo/>, document.getElementById('test'));
+    </script>
+</body>
+
+</html>

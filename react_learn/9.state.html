@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jsx语法规则</title>
+    <style>
+        .title {
+            background-color: orange;
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 准备好一个“容器” -->
+    <div id="test"></div>
+
+    <!-- 引入react核心库 -->
+    <script type="text/javascript" src="package/react.development.js"></script>
+    <!-- 引入react-dom，用于支持react操作DOM -->
+    <script type="text/javascript" src="package/react-dom.development.js"></script>
+    <!-- 引入babel，用于将jsx转为js -->
+    <script type="text/javascript" src="package/babel.min.js"></script>
+
+    <script type="text/babel">
+        class Wheather extends React.Component {
+            constructor(props){
+                super(props)
+                this.state = {isHot : false}
+                this.changeWeather = this.changeWeather.bind(this);
+            }
+            render() {
+                return  (
+                    <h1 onClick = {this.changeWeather}>今天天气真{this.state.isHot ? '炎热' : '凉爽'}</h1>
+                );
+            }
+            changeWeather() {
+                const isHot = this.state.isHot;
+                // react不支持手动更改state，必须通过内置api setState来进行更改
+                this.setState({isHot:!isHot});
+            }
+        }
+        ReactDOM.render(<Wheather/>, document.getElementById('test'));
+
+    </script>
+</body>
+
+</html>
