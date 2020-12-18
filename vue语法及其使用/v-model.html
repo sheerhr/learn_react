@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+    <div id="app">
+            <div>
+               <label>简述：</label>
+               <textarea maxlength="300" :value="text" @input="mycou"></textarea>
+            </div>
+           
+            <div>
+               <p id="spann">您还可以输入{{wordc}}字</p>
+            </div>
+    </div>
+        
+        
+    <script src="vue.js"></script>
+
+    <script>
+            new Vue({
+            el:'#app',
+            data(){
+                return{
+                    text: '',
+                    wordc: '300'
+                }
+            },
+            methods:{
+                mycou: function (event) {
+                    this.text = this.text+e.event;
+                    var a = this.text.length
+                    this.wordc = 300 - a
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

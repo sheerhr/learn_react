@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*  每个函数都有一个prototype属性，这个属性指向函数的原型对象
+            原型的概念：每一个javascript对象(除null外)创建的时候，就会与之关联另一个对象，
+            这个对象就是我们所说的原型，每一个对象都会从原型中“继承”属性。
+        */
+        function Person(age) {
+            this.age = age       
+        }
+        console.log(Person.prototype);
+        Person.prototype.name = 'kavin'
+        var person1 = new Person()
+        var person2 = new Person()
+        console.log(person1.name) //kavin
+        console.log(person2.name)  //kavin
+
+        /*
+            这是每个对象(除null外)都会有的属性，叫做__proto__，这个属性会指向该对象的原型。
+        */
+        console.log(person1.__proto__);
+        console.log(person1.__proto__ == Person.prototype);
+
+        /*
+            每个构造函数都有一个原型对象，而这个原型对象的__proto__属性则会指向他的原型Object.prototype
+
+            原型对象里边的固有属性有两个，一个是__proto__,一个是他所指向的构造函数constrctor属性,
+
+            原型的原型一直往上找，知道指向object.prototype.
+        */
+    </script>
+</body>
+</html>

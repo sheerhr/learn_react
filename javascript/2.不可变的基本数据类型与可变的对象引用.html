@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * 原始值是不可以更改的，对面是可以更改其属性值的。
+        */
+        var s = "string";
+        s = s.toUpperCase();
+        console.log(s);//string
+
+        var a = {
+            "name" : "zhansgan",
+            "age" : 19
+        }
+        a.name = "lisi";
+        console.log(a);
+    </script>
+</body>
+</html>

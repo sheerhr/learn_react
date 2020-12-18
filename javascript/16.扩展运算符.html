@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // let fun = (...value) => {
+        //     console.log(value);
+        // }
+        // fun([1,2,3,4,5]);
+        var fun = function fun() {
+            for (var _len = arguments.length, value = new Array(_len), _key = 0; _key < _len; _key++) {
+                value[_key] = arguments[_key];
+            }
+            console.log(value);
+        };
+        fun([1, 2, 3, 4, 5]);
+    </script>
+</body>
+</html>

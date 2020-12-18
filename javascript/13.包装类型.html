@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            在这里， s1 是一个包含字符串的变量，它是一个原始值。第二行紧接着在 s1 上调用了 substring()
+            方法，并把结果保存在 s2 中。我们知道，原始值本身不是对象，因此逻辑上不应该有方法。而实际上
+            这个例子又确实按照预期运行了。这是因为后台进行了很多处理，从而实现了上述操作。
+        */
+        let s1 = "hello world";
+        let s2 = s1.substring(2);
+        console.log(s2);
+        /*
+            具体来说，当第二行访问 s1 时，是以读模式访问的，也就是要从内存中读取变量保存的值。在以读模式访问字符串
+            值的任何时候，后台都会执行以下 3 步：
+            (1) 创建一个 String 类型的实例；
+            (2) 调用实例上的特定方法；
+            (3) 销毁实例。
+        */
+        let s1 = new String("some text");
+        let s2 = s1.substring(2);
+        s1 = null;
+
+        /*
+            引用类型与原始值包装类型的主要区别在于对象的生命周期。在通过 new 实例化引用类型后，得到
+            的实例会在离开作用域时被销毁，而自动创建的原始值包装对象则只存在于访问它的那行代码执行期
+            间。这意味着不能在运行时给原始值添加属性和方法。比如下面的例子：*/
+        let s1 = "some text";
+        s1.color = "red";
+        console.log(s1.color); // undefined
+        /*
+            原因就是第二行代码运行时会临时创建一个 String 对象，而当第三行代码执行时，这个对
+            象已经被销毁了。实际上，第三行代码在这里创建了自己的 String 对象，但这个对象没有 color 属性。
+        */
+
+    </script>
+</body>
+</html>

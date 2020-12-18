@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let someDate = new Date(Date.parse("May 23, 2019"));
+        console.log(someDate);//Thu May 23 2019 00:00:00 GMT+0800 (中国标准时间)
+        // 如果传给 Date.parse() 的字符串并不表示日期，则该方法会返回 NaN 。如果直接把表示日期的字
+        // 符串传给 Date 构造函数，那么 Date 会在后台调用 Date.parse() 。换句话说，下面这行代码跟前面
+        // 那行代码是等价的：
+        let someDate1 = new Date("May 23, 2019");
+        // 这两行代码得到的日期对象相同。
+        let y2k = new Date(Date.UTC(2000, 0));
+        console.log(y2k)
+        let allFives = new Date(2005, 4, 5, 17, 55, 55);
+        console.log(allFives);
+        let start = Date.now();
+        console.log(start);
+    </script>
+</body>
+</html>

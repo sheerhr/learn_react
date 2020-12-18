@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="get" ref="get">{{test}}</button>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data:{
+                test:"haha"
+            },
+            methods: {
+                async get() {
+                   this.test = "hehe";
+                   console.log(this.$refs['get'].innerText);
+                   await this.$nextTick();
+                   console.log(this.$refs['get'].innerText);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

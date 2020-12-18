@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a = 0xff;  
+        var b = "shsajs";      
+        /**
+         * js数值类型
+         * 255 Infinity Infinity Infinity Infinity -Infinity false
+         * 
+         * js中的NAN是一个特殊的值，他和任何值都不相等，包括他自己
+         * 
+         * */
+        console.log(Math.pow(2,400000000000000000));
+        console.log(Number.POSITIVE_INFINITY);
+        console.log(1/0);
+        console.log(Infinity);
+        console.log(Number.NEGATIVE_INFINITY);
+        console.log(NaN == NaN);
+        console.log(isNaN("hehe"));
+        console.log(b != b);
+
+        /**
+         * 问题1：怎么判断一个变量是否是NAN?
+         * 只有当变量不等于自己时，他才是NAN
+        */
+
+        var c = NaN ;
+        // 错误的判断,打印结果是false
+        console.log(c == NaN);
+
+        // 正确答案
+        console.log(c != c);
+
+        /**
+         * js使用二进制表示法，在任何使用二进制表示法的语言中，可以精确地表示1/2,1/8,但是不能正确地表示十进制分数1/10
+         * 
+        */
+        var x = .3 - .2;
+        var y = .2 - .1;
+        console.log(x == y);
+
+        console.log(x);
+        console.log(y);
+
+        var p = "π";
+        console.dir(p);
+        console.log('\u03c0');
+        /**
+         * 任意的javascript的值都可以转换为布尔值，以下值会被转换为false
+        */
+        console.log(undefined);
+        console.log(null);
+        console.log(0);
+        console.log(-0);
+        console.log(NaN);
+        console.log("");
+
+        /**
+         * 字符串类型string
+        */
+
+        var str = "hello world";
+
+        /**
+         * null和undefined
+         * null是一个关键字，undefined是一个预定义的全局变量
+         * null表示程序级的空缺，是可预料的，而undefined表示系统级的空缺，是不可预料的
+        */
+        console.log(typeof(null));
+
+        console.log(null == undefined);//true
+
+        console.log(null === undefined);
+
+        var aaa;
+        console.log(aaa);
+
+        var a = null;
+
+        /**
+         * es6提供了一种新的原始数据类型symbol
+         * Symbol.for() 类似单例模式，首先会在全局搜索被登记的Symbol中是否有该字符串参数作为名称的 Symbol 值，
+         * 如果有即返回该 Symbol 值，
+         * 若没有则新建并返回一个以该字符串参数为名称的Symbol值,并登记在全局环境中供搜索。
+        */
+        let sy = Symbol.for("key1");
+        let sy1 = Symbol.for("key1");
+        console.log(sy == sy1);//true
+
+        let sy2 = Symbol("key1");
+        let sy3 = Symbol("key1");
+        console.log(sy2 == sy3);//false
+
+
+        /**
+         * object类型
+         * this指向window对象
+        */
+        var globle = this;
+        console.log(this);
+    </script>
+</body>
+</html>

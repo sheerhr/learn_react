@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active {
+            background-color:pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <div v-for="c in courses" :key = "c" :class="{active:selectedCourse === c}" @click = "selectedCourse = c">{{c}}</div> -->
+        <div v-for="c in courses" :key = "c" :style="{'background-color':(selectedCourse === c?'#ddd':'transparent')}" @click = "selectedCourse = c">{{c}}</div>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data()  {
+                return {
+                    courses:["web","java"],
+                    selectedCourse:'',
+                    title:'',
+                    course:''
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

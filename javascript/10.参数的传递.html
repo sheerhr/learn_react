@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function addTen(num) {
+            num += 10;
+            return num;
+        }
+        let count = 20;
+        let result = addTen(count);
+        console.log(count); // 20，没有变化
+        console.log(result); // 30
+
+        /*这里，函数 addTen() 有一个参数 num ，它其实是一个局部变量。在调用时，变量 count 作为参数
+        传入。 count 的值是 20，这个值被复制到参数 num 以便在 addTen() 内部使用。在函数内部，参数 num
+        的值被加上了 10，但这不会影响函数外部的原始变量 count 。参数 num 和变量 count 互不干扰，它们
+        只不过碰巧保存了一样的值。如果 num 是按引用传递的，那么 count 的值也会被修改为 30。这个事实
+        在使用数值这样的原始值时是非常明显的。*/
+
+        /*这一次，我们创建了一个对象并把它保存在变量 person 中。然后，这个对象被传给 setName()
+        方法，并被复制到参数 obj 中。在函数内部， obj 和 person 都指向同一个对象。结果就是，即使对象
+        是按值传进函数的， obj 也会通过引用访问对象。当函数内部给 obj 设置了 name 属性时，函数外部的
+        对象也会反映这个变化，因为 obj 指向的对象保存在全局作用域的堆内存上。很多开发者错误地认为，
+        当在局部作用域中修改对象而变化反映到全局时，就意味着参数是按引用传递的。*/
+        function setName(obj) {
+            obj.name = "Nicholas";
+        }
+        let person = new Object();
+        setName(person);
+        console.log(person.name); // "Nicholas"
+
+        /*
+        准确的说，JS中的基本类型按值传递，对象类型按共享传递的(call by sharing，也叫按对象传递、按对象共享传递)。该求值策略被用于Python、Java、Ruby、JS等多种语言。
+
+        该策略的重点是：调用函数传参时，函数接受对象实参引用的副本(既不是按值传递的对象副本，也不是按引用传递的隐式引用)。
+
+        它和按引用传递的不同在于：在共享传递中对函数形参的赋值，不会影响实参的值。*/
+
+        var obj = { x: 0 };
+        obj.x = 100;
+        var o = obj;
+        o.x = 1;
+        obj.x; // 1, 被修改
+        o = true;
+        obj.x; // 1, 不会因o = true改变
+
+        /*
+            这里定义变量obj，值是object，然后设置obj.x属性的值为100。而后定义另一个变量o，值仍然是这个object对象，
+            此时obj和o两个变量的值指向同一个对象（共享同一个对象的引用）。
+            所以修改对象的内容，对obj和o都有影响。但对象并非按引用传递，
+            通过o = true修改了o的值，不会影响obj。
+        */
+
+        /*
+            总结：值传递不会被修改；对象传递，本身不会被修改，但属性值可以被修改且只能通过属性修改
+        */
+
+        var a1 = 10;
+        var b1 = a1;
+        a1 = 9;
+        console.log(b1);
+
+        var a1;
+        var b1;
+        a1 = 10;
+        b1 = a1;
+        a1 = 9;
+
+
+    </script>
+</body>
+
+</html>

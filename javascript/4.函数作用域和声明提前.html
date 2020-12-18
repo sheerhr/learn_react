@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 变量提升
+        var scope = "hehe";
+        function test(){
+            console.log(scope);
+            var scope = "函数内部";
+            console.log(scope);
+        }
+
+        // 等价于
+        var scope = "hehe";
+        function test(){
+            var scope;
+            console.log(scope);//undefined
+            scope = "函数内部";
+            console.log(scope);
+        }
+    </script>
+</body>
+</html>

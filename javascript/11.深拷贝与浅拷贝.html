@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="background-color: pink;height: 200px;width: 200px;">
+
+    </div>
+    <script>
+        // 数组的深拷贝与浅拷贝 concat() slice()
+        var arra = ['a','b','c'];
+        var arrb = arra.concat();
+        arrb.push('d');
+        console.log(arra);
+
+
+
+
+        //利用序列化来深拷贝,但是不支持function
+        var o1 = {
+            o:1,
+            obj:{id:999},
+            action:function(){
+                console.log(this.o);
+            }
+        };
+        var o2 = {r:2};
+        function fun(obj) {
+            var o = {};
+            Object.assign(o,obj);
+            return o;
+        }
+        var o3 = JSON.parse(JSON.stringify(o1));
+        o3.obj.id = 888;
+
+        console.log(o1);
+        console.log(o3);
+
+        var a = {
+            name:'张三',
+            arr:[1,2],
+            obj:{id:10,},
+            action: function(){
+                console.log(this.name);
+            }
+        }
+        function deep(dest,obj){
+            var o = dest;
+            for (const key in obj) {
+                if (typeof obj[key] === 'object'){
+                    //在堆内存中不停地重新构造引用类型的实例
+                    o[key] = (obj[key].constructor === Array)?[]:{};
+                    //递归把空数组，对象传进去赋值
+                    deep(o[key],obj[key]);
+                }else {
+                    //给实例填充值
+                    o[key] = obj[key];
+                }        
+            }
+            return o;
+        }
+
+        let o = deep({},a);
+        console.log(o);
+    </script>
+</body>
+</html>

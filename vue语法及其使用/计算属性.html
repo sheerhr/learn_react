@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active {
+            background-color:pink;
+        }
+    </style>
+    git remote add origin git@github.com:sheerhr/spring.git
+    git add .
+    git remote add sheerhr git@github.com:sheerhr/spring.git
+    git push sheerhr master
+</head>
+
+<body>
+    <div id="app">
+        <!-- <div v-for="c in courses" :key = "c" :class="{active:selectedCourse === c}" @click = "selectedCourse = c">{{c}}</div> -->
+        <div v-for="c in courses" :key = "c" :style="{'background-color':(selectedCourse === c?'#ddd':'transparent')}" 
+        @click = "selectedCourse = c">{{c}}</div>
+        <div>总数{{totalCount}}</div>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data()  {
+                return {
+                    courses:["web","java"],
+                    selectedCourse:'',
+                    title:'',
+                    course:'',
+                    totalCount:'',
+                }
+            },
+            computed: {
+                //计算属性有缓存，如果值没有发生变化，页面不会重新渲染
+                // total() {
+                //     return this.courses.length+"门"
+                // }
+            },
+            watch: {
+                courses: {
+                    immediate: true,
+                    // deep: true,
+                    handler(newValue, oldValue) {
+                        this.totalCount = newValue.length + "门";
+                    }
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

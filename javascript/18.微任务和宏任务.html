@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        setTimeout(function(){
+            console.log(2);
+        },0)
+        new Promise(function(resolve){
+            console.log(3);
+            resolve();
+            console.log(4);
+        }).then(()=>{
+            console.log(5);
+        })
+        console.log(8);
+
+        //执行结果3.4.8.5.2
+
+        console.log(1);
+        setTimeout(() =>{
+            console.log(5);
+        },100)
+        new Promise(resolve => {
+            console.log(2);
+            setTimeout(() => {
+            console.log(6)
+        }, 100);
+            resolve();
+        }).then(res => {
+            console.log(4)
+        })
+        console.log(3);
+        //执行结果是1,2,3,4,5,6
+        //宏任务微任务执行顺序是，当每一次事件循环开始时：先执行完主线程中的同步任务，
+        //取出微任务队列中的任务直至清空，然后拿出宏任务队列中的一个任务
+        //（注意这里是一个任务）执行，再执行微任务队列中全部任务。
+        //进而重复上述执行顺序，执行一个宏任务，清空微任务，直至所有任务全部执行完成。
+        //注意：promise中的构造函数中的回调函数仍然是同步代码，在js主线程中执行，只有then()中的代码才会被放入到微任务队列中。
+    </script>
+</body>
+</html>
