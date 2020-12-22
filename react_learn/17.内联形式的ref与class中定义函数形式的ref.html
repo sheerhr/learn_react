@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jsx语法规则</title>
+    <style>
+        .title {
+            background-color: orange;
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 准备好一个“容器” -->
+    <div id="test"></div>
+    <!-- 引入react核心库 -->
+    <script type="text/javascript" src="package/react.development.js"></script>
+    <!-- 引入react-dom，用于支持react操作DOM -->
+    <script type="text/javascript" src="package/react-dom.development.js"></script>
+    <!-- 引入babel，用于将jsx转为js -->
+    <script type="text/javascript" src="package/babel.min.js"></script>
+    <!-- 引入propTypes，用于校验props属性 -->
+    <script type="text/javascript" src="package/prop-types.js"></script>
+
+    <script type="text/babel">
+        class Refs extends React.Component {
+            state = {isHot:true}
+            alertValue = () => {
+                const input1 = this.input1;
+                alert(input1.value);
+            }
+            toggleWeather= () => {
+                const isHot = this.state.isHot;
+                // this.state.isHot = !isHot; 翻车翻车翻车！
+                this.setState({isHot:!isHot});
+            }
+            //类中定义函数形式的ref
+            saveInput = (c) => {
+                this.input1 = c;
+            }
+            render() {
+                return (
+                    <div>
+                        <div>今天天气真{this.state.isHot?"凉爽":'炎热'}</div>
+                        <button onClick={this.toggleWeather}>点击切换天气</button>
+                        {/*内联形式的ref<input ref={(curNode) => {this.input1 = curNode;console.log("@",curNode);}} type="text"/>&nbsp;*/}
+                        <input ref={this.saveInput} type="text"/>&nbsp;
+                        <button onClick={this.alertValue}>点击</button>&nbsp;
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<Refs />, document.getElementById('test'));
+    </script>
+</body>
+
+</html>
