@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jsx语法规则</title>
+    <style>
+        .title {
+            background-color: orange;
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 准备好一个“容器” -->
+    <div id="test"></div>
+    <!-- 引入react核心库 -->
+    <script type="text/javascript" src="package/react.development.js"></script>
+    <!-- 引入react-dom，用于支持react操作DOM -->
+    <script type="text/javascript" src="package/react-dom.development.js"></script>
+    <!-- 引入babel，用于将jsx转为js -->
+    <script type="text/javascript" src="package/babel.min.js"></script>
+    <!-- 引入propTypes，用于校验props属性 -->
+    <script type="text/javascript" src="package/prop-types.js"></script>
+
+    <script type="text/babel">
+        class Login extends React.Component {
+            saveUsername = (c) => {
+                this.username = c;
+            }
+
+            savePassword = (c) => {
+                this.password = c.value;
+            }
+
+            handleSubmit = (event) => {
+                event.preventDefault();
+                const {username,password} = this;
+                alert(`登录名是${username.value},密码是${password.value}`);
+            }
+            render(){
+                return (
+                    <form onSubmit = {this.handleSubmit}>
+                        用户名:<input ref={this.saveUsername} type="text" name="username"/>
+                        密码:<input ref={this.savePassword} type="password" name="password"/>
+                        <button>登录</button>
+                    </form>
+                )
+            }
+        }
+
+        ReactDOM.render(<Login/>,document.getElementById('test'));
+    </script>
+</body>
+
+</html>
