@@ -101,3 +101,116 @@
     let newValue = oldValue >>> 5; // 等于十进制 134217726
     console.log(newValue);
 })();
+
+/**
+ * 逻辑操作符
+ */
+
+/**
+ * 逻辑非操作符由一个感叹号表示
+ * 这个操作符始终返回布尔值，无论应用到的是什么数据类型。
+ * 逻辑非操作符首先将操作数转换为布尔值，然后再对其取反。
+ * 换句话说，逻辑非操作符会遵循如下规则。
+ *   如果操作数是对象，则返回 false 。
+ *   如果操作数是空字符串，则返回 true 。
+ *   如果操作数是非空字符串，则返回 false 。
+ *   如果操作数是数值 0，则返回 true 。
+ *   如果操作数是非 0 数值（包括 Infinity ），则返回 false 。
+ *   如果操作数是 null ，则返回 true 。
+ *   如果操作数是 NaN ，则返回 true 。
+ *   如果操作数是 undefined ，则返回 true 。
+ * 逻辑非操作符也可以用于把任意值转换为布尔值。同时使用两个叹号（ !! ），相当于调用了转型函数 Boolean() 。
+ * 第二个叹号对该布尔值取反，从而给出变量真正对应的布尔值。结果与对同一个值使用 Boolean() 函数是一样的
+ */
+(function test9() {
+    console.log(!false); //true
+    console.log(!"blue"); //false
+    console.log(!0); //true
+    console.log(!NaN); //true
+    console.log(!undefined); //true
+    console.log(!12345); //false
+    console.log(!""); //true
+    console.log(!!"adv"); //true
+})();
+
+/**
+ * 逻辑与
+ * 逻辑与操作符可用于任何类型的操作数，不限于布尔值。
+ * 如果有操作数不是布尔值，则逻辑与并不一定会返回布尔值，而是遵循如下规则。
+ *   如果第一个操作数是对象，则返回第二个操作数。
+ *   如果第二个操作数是对象，则只有第一个操作数求值为 true 才会返回该对象。
+ *   如果两个操作数都是对象，则返回第二个操作数。
+ *   如果有一个操作数是 null ，则返回 null 。
+ *   如果有一个操作数是 NaN ，则返回 NaN 。
+ *   如果有一个操作数是 undefined ，则返回 undefined 。
+ * 逻辑与操作符是一种短路操作符，意思就是如果第一个操作数决定了结果，那么永远不会对第二个操作数求值。
+ */
+(function test10() {
+    // 如果第一个操作数是对象，则返回第二个操作数。
+    let a = new Object({ "name": "zhangsan", "age": 10 });
+    let b = "haha";
+    console.log(a && b);
+    //如果第二个操作数是对象，则只有第一个操作数求值为 true 才会返回该对象。
+    console.log(b && a);
+    // 如果有一个操作数是 null ，则返回 null 。
+    let c = null;
+    console.log(typeof c);
+    console.log(a && c);
+    console.log(c && a);
+    // 如果有一个操作数是 NaN ，则返回 NaN 。
+    console.log(NaN && a);
+    // 逻辑与操作符是一种短路操作符，意思就是如果第一个操作数决定了结果，那么永远不会对第二个操作数求值。
+    const d = () => {
+        console.log("hello world");
+    };
+
+    function e(param) {
+        param && param();
+        console.log("------------------------------------------");
+    }
+    e(d);
+    e();
+})();
+
+/**
+ * 逻辑或
+ * 逻辑或操作符由两个管道符（ || ）表示，比如
+ * 与逻辑与类似，如果有一个操作数不是布尔值，那么逻辑或操作符也不一定返回布尔值。它遵循如下规则。
+ *   如果第一个操作数是对象，则返回第一个操作数。
+ *   如果第一个操作数求值为 false ，则返回第二个操作数。
+ *   如果两个操作数都是对象，则返回第一个操作数。
+ *   如果两个操作数都是 null ，则返回 null 。
+ *   如果两个操作数都是 NaN ，则返回 NaN 。
+ *   如果两个操作数都是 undefined ，则返回 undefined 。
+ * 同样与逻辑与类似，逻辑或操作符也具有短路的特性。只不过对逻辑或而言，第一个操作数求值为true ，第二个操作数就不会再被求值了。
+ */
+
+(function test11() {
+    let found = true;
+    let result = found || somesssak;
+    console.log(result);
+    console.log(true || false);
+})();
+
+/**
+ * 乘性操作符
+ * 主要介绍一下取模运算符
+ */
+
+(function test12() {
+    let result = 196 % 182;
+    console.log(result);
+})();
+
+/**
+ * 指数操作符
+ * ECMAScript 7新增了指数操作符， Math.pow() 现在有了自己的操作符 ** ，结果是一样的
+ * 不仅如此，指数操作符也有自己的指数赋值操作符 **= ，该操作符执行指数运算和结果的赋值操作
+ */
+(function test13() {
+    console.log(Math.pow(3, 2));
+    console.log(3 ** 2);
+    let squared = 3;
+    squared **= 3;
+    console.log(squared);
+})();

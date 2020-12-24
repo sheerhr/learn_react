@@ -105,6 +105,7 @@ console.log(message + "\n");
     console.log(isNaN(10));
     console.log(isNaN("10"));
     console.log(isNaN("blue")); //true
+    console.log(NaN + 10);
     console.log(isNaN(true));
     console.log(isNaN("haha" - 1)); //true
     console.log(isNaN("haha" * 1)); //true
