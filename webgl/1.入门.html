@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let webgl = null;
+
+        function init() {
+            console.log(0.5 === .5);
+            const canvas = document.querySelector("#glcanvas");
+            // 初始化WebGL上下文
+            const gl = canvas.getContext("webgl");
+            // 确认WebGL支持性
+            if (!gl) {
+                alert("无法初始化WebGL，你的浏览器、操作系统或硬件等可能不支持WebGL。");
+                return;
+            }
+            canvas.setAttribute("width", 200);
+            // gl.viewport(0, 0, , canvas.clientHeight);
+            /**
+             * clearColor()方法用于设置清空颜色缓冲时的颜色值。
+             */
+            /**
+             * RGBA是代表Red（红色） Green（绿色） Blue（蓝色）和 Alpha的色彩空间。
+             * 虽然它有的时候被描述为一个颜色空间，但是它其实仅仅是RGB模型的附加了额外的信息。
+             * alpha通道一般用作不透明度参数。如果一个像素的alpha通道数值为0%，那它就是完全透明的（也就是看不见的），
+             * 而数值为100%则意味着一个完全不透明的像素（传统的数字图像）。
+             * 在0%和100%之间的值则使得像素可以透过背景显示出来有时它也被写成ARGB
+             * （像RGBA一样，但是第一个数据是alpha），是Macromedia的产品使用的术语。
+             */
+            gl.clearColor(0.0, 0.0, 0.0, 1.0);
+            /**
+             * 方法使用预设值来清空缓冲。
+             * 预设值可以使用 clearColor() 、 clearDepth() 或 clearStencil() 设置
+             */
+            gl.clear(gl.COLOR_BUFFER_BIT);
+        }
+    </script>
+</head>
+
+<body onload="init()">
+    <canvas id="glcanvas" width="640" height="480">
+        你的浏览器似乎不支持或者禁用了HTML5 <code>&lt;canvas&gt;</code> 元素.
+    </canvas>
+</body>
+
+</html>

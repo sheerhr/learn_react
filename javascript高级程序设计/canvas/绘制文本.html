@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>绘制文本</title>
+</head>
+<body>
+    <canvas id="drawing" width="200" height="200"></canvas>
+    <script>
+        let drawing = document.getElementById("drawing");
+        if(drawing.getContext) {
+            let context = drawing.getContext("2d");
+            context.beginPath();
+            context.beginPath();
+            // 绘制外圆    
+            context.arc(100, 100, 99, 0, 2 * Math.PI, false);
+            // 绘制内圆
+            // 而在绘制内圆之前，必须先把路径移动到内圆上的一点，以避免绘制出多余的线条。
+            // moveTo(x, y) 不绘制线条，只把绘制光标移动到 (x, y)
+            context.moveTo(194, 100);
+            context.arc(100, 100, 94, 0, 2 * Math.PI, false);
+            //  绘制分针
+            context.moveTo(100, 100);
+            // lineTo(x, y) ：绘制一条从上一点到 (x, y) 的直线。
+            context.lineTo(100, 15);
+            //  绘制时针
+            context.moveTo(100, 100);
+            context.lineTo(35, 100);
+            // font ：以 CSS 语法指定的字体样式、大小、字体族等，比如 "10px Arial" 
+            context.font = "bold 14px Arial";
+            //指定文本的对齐方式，可能的值包括 "start" 、 "end" 、 "left" 、 "right" 和
+            // "center" 。推荐使用 "start" 和 "end" ，不使用 "left" 和 "right" ，因为前者无论在从左到右
+            // 书写的语言还是从右到左书写的语言中含义都更明确。
+            context.textAlign = "center";
+            //textBaseLine ：指 定 文 本的 基线 ， 可能 的值 包 括 "top" 、 "hanging" 、 "middle" 、
+            // "alphabetic" 、 "ideographic" 和 "bottom" 。
+            context.textBaseline = "bottom";
+            context.fillText("12", 80, 20);
+            //  描画路径
+            context.stroke();
+        }
+    </script>
+</body>
+</html>
