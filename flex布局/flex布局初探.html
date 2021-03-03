@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1 {
+            display: flex;
+        }
+        #div2 {
+            display: flex;
+        }
+        div {
+            background-color: silver;
+            border: 1px dashed;
+            margin-bottom: 20PX;
+        }
+        div> * {
+            margin: 10px;
+            border: 1px solid red;
+            background-color: #AAA;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">
+        <span>SPAN1</span>
+        <span>SPAN2</span>
+        <p>段落3</p>
+    </div>
+    <div id="div2">
+        <span>SPAN3</span>
+        <span>SPAN4</span>
+        <p>段落4</p>
+    </div>
+</body>
+</html>
