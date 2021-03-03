@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<style>
+    .active {
+        background-color: #000000;
+    }
+</style>
+<head>
+    <title>Vue怎么绑定样式</title>
+</head>
+
+<body>
+    <div id="demo">
+        <div v-for="item in items" :key="item" :class = "{active : selectedCourse === item}" @click="selectedCourse = item">
+            {{ item }}
+        </div>
+    </div>
+      
+    <script src="vue.js"></script>
+      
+    <script>
+        Vue.component('comp', {
+            template: '<div @click="counter++">{{counter}}</div>',
+            data() {
+                return { counter: 0 }
+            }
+        })
+        // 创建实例
+        const app = new Vue({
+            el: '#demo',
+            data() {
+                return {
+                    selectedCourse: "",
+                    items :['Java程序设计',"javascript高级程序设计"]
+                }
+            },
+            methods: {
+                name() {
+                    
+                },
+            },
+        });
+    </script>
+</body>
+
+</html>
