@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <style>
+        #e {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid red;
+            border-left: none;
+            border-bottom: none;
+            margin: 10px auto;
+            transform: rotate(45deg);
+            position: absolute;
+            left: 0;
+            top: 0;
+            zoom: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="e"></div>
+    <script>
+        var e = document.getElementById("e");
+        var flag = true;
+        var left = 0;
+
+        function render() {
+            if (flag == true) {
+                if (left >= 100) {
+                    flag = false
+                }
+                e.style.left = ` ${left++}px`
+            } else {
+                left = 0;
+                if (left <= 0) {
+                    console.log("haha");
+                    left = 0
+                    flag = true
+                }
+                e.style.left = ` ${left++}px`
+            }
+        }
+        //requestAnimationFrame效果
+        (function animloop() {
+            render();
+            window.requestAnimationFrame(animloop);
+        })();
+    </script>
+</body>
+
+</html>

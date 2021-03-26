@@ -1,4 +1,7 @@
 {
     "javascript.validate.enable": false,
-    "editor.suggest.snippetsPreventQuickSuggestions":false
+    "editor.suggest.snippetsPreventQuickSuggestions":false,
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    }
 }

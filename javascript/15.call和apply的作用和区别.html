@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
         var name = 'Evan';
@@ -12,10 +14,10 @@
         var person = {
             name: 'Hillary',
             age: 19,
-            sayIntroduce: function () {
+            sayIntroduce: function() {
                 return "Hello, My name is " + this.name + " and I'm " + this.age + ' years old.'
             },
-            sayHobby: function (val1, val2) {
+            sayHobby: function(val1, val2) {
                 return "I'm " + this.name + ", I like " + val1 + " and " + val2 + ".";
             }
         }
@@ -45,8 +47,8 @@
             this.min = min;
             this.average = average;
         }
-        
-        function Subject(subjectName,max, min, average) {
+
+        function Subject(subjectName, max, min, average) {
             Grade.call(this, max, min, average);
             this.subjectName = subjectName;
         }
@@ -54,4 +56,5 @@
         console.log(math);
     </script>
 </body>
+
 </html>

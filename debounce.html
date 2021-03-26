@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="input">请输入</input>
+    <script>
+        function inputFn(value) {
+            console.log(`输出的是${value}`);
+        }
+        function debounce(fn,delay) {
+            let timer;
+            return function(args) {
+                clearTimeout(timer);
+                const that = this;
+                console.log(this);
+                timer = setTimeout(function() {
+                    fn.call(that,args);
+                },delay);
+            }
+        }
+        const a = document.getElementById("input");
+        const inputFun = debounce(inputFn,5000);
+        a.addEventListener("keyup",function(e) {
+            inputFun(e.target.value);
+        }
+        )
+    </script>
+</body>
+</html>
