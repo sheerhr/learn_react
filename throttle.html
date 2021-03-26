@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>节流函数</title>
+</head>
+<body>
+    <button id = "button">点击</button>
+
+    <script>
+        function handle(args) {
+            console.log(args);
+            console.log(Math.random());
+        }
+
+        function throttle(func,wait) {
+            let timeout;
+            return function() {
+                let context = this;
+                let args = arguments;
+                if(!timeout) {
+                    timeout = setTimeout(function() {
+                        timeout = null;
+                        func.apply(context,args);
+                    },wait);
+                }
+            }
+        }
+        document.getElementById('button').onclick = throttle(handle,1000);
+    </script>
+</body>
+</html>
